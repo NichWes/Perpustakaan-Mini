@@ -3,6 +3,7 @@
   "java.project.outputPath": "bin",
   "java.project.referencedLibraries": [
     "lib/**/*.jar",
+    "C:/Users/Thinkbook/Downloads/javafx-sdk-25/lib/**/*.jar",
     "c:\\Users\\Thinkbook\\Downloads\\javafx-sdk-25\\lib\\javafx.base.jar",
     "c:\\Users\\Thinkbook\\Downloads\\javafx-sdk-25\\lib\\javafx.controls.jar",
     "c:\\Users\\Thinkbook\\Downloads\\javafx-sdk-25\\lib\\javafx.fxml.jar",
@@ -14,5 +15,7 @@
     "c:\\Users\\Thinkbook\\Downloads\\javafx-sdk-25\\lib\\jdk.jsobject.jar",
     "c:\\Users\\Thinkbook\\Downloads\\javafx-sdk-25\\lib\\jfx.incubator.input.jar",
     "c:\\Users\\Thinkbook\\Downloads\\javafx-sdk-25\\lib\\jfx.incubator.richtext.jar"
-  ]
+  ],
+  "java.project.resources": ["resources"],
+  "java.debug.settings.vmArgs": "--module-path C:/Users/Thinkbook/Downloads/javafx-sdk-25/lib --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics"
 }

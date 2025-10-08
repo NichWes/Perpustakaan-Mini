@@ -1,21 +1,24 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "App",
-            "request": "launch",
-            "mainClass": "App",
-            "projectName": "Perpustakaan Mini_c12492f1"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "run MainApp",
+      "request": "launch",
+      "mainClass": "com.uts.MainApp",
+      "projectName": "Perpustakaan Mini_c12492f1",
+      "vmArgs": "--module-path C:/Users/Thinkbook/Downloads/javafx-sdk-25/lib --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics",
+      "classPaths": ["${workspaceFolder}/bin", "${workspaceFolder}/resources"],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
 }
