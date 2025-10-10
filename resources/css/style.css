@@ -1,0 +1,119 @@
+.root {
+  -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  -fx-background-color: #f7f7f7;
+  -fx-text-fill: #333;
+}
+
+.label {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2c3e50;
+}
+
+.text-field,
+.combo-box {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #dcdcdc;
+  -fx-border-radius: 6px;
+  -fx-background-radius: 6px;
+  -fx-padding: 6 10 6 10;
+  -fx-font-size: 13px;
+  -fx-pref-height: 34px;
+}
+.text-field:focused,
+.combo-box:focused {
+  -fx-border-color: #4e8df5;
+  -fx-effect: dropshadow(two-pass-box, rgba(78, 141, 245, 0.3), 5, 0.2, 0, 0);
+}
+
+.table-view {
+  -fx-background-color: white;
+  -fx-border-color: #dcdcdc;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+}
+.table-view .column-header {
+  -fx-background-color: #4e8df5;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+}
+.table-view .table-row-cell:selected {
+  -fx-background-color: #bcd3ff;
+}
+.table-view .table-row-cell:hover {
+  -fx-background-color: #edf3ff;
+}
+
+.button {
+  -fx-background-color: #4e8df5;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-background-radius: 8px;
+  -fx-padding: 8 16;
+  -fx-cursor: hand;
+  -fx-font-size: 13px;
+}
+.button:hover {
+  -fx-background-color: #3b73db;
+}
+.button:pressed {
+  -fx-background-color: #315bb8;
+}
+
+#btnAdd {
+  -fx-background-color: #2ecc71;
+}
+#btnAdd:hover {
+  -fx-background-color: #28b463;
+}
+#btnDelete {
+  -fx-background-color: #e74c3c;
+}
+#btnDelete:hover {
+  -fx-background-color: #c0392b;
+}
+#btnBorrow {
+  -fx-background-color: #4e8df5;
+}
+#btnBorrow:hover {
+  -fx-background-color: #3b73db;
+}
+
+.header-title {
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #34495e;
+  -fx-padding: 10 0 15 0;
+}
+
+.main-container {
+  -fx-alignment: center;
+  -fx-spacing: 10;
+}
+.main-button {
+  -fx-background-color: #4e8df5;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-background-radius: 10px;
+  -fx-padding: 10 30;
+  -fx-font-weight: bold;
+}
+.main-button:hover {
+  -fx-background-color: #3b73db;
+}
+
+.scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.dialog-pane {
+  -fx-background-color: #ffffff;
+}
+.dialog-pane .header-panel {
+  -fx-background-color: #4e8df5;
+  -fx-text-fill: white;
+}
+.dialog-pane .button {
+  -fx-background-color: #4e8df5;
+  -fx-text-fill: white;
+}

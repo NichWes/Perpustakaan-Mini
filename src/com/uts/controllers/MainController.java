@@ -32,6 +32,7 @@ public class MainController {
             controller.setBookList(sharedBooks);
 
             Stage stage = new Stage();
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             stage.setTitle("Manajemen Buku");
             stage.setScene(scene);
             stage.show();
@@ -49,6 +50,7 @@ public class MainController {
             controller.setMemberList(sharedMembers);
 
             Stage stage = new Stage();
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             stage.setTitle("Manajemen Anggota");
             stage.setScene(scene);
             stage.show();
@@ -68,6 +70,7 @@ public class MainController {
             controller.setTransactionList(sharedTransactions);
 
             Stage stage = new Stage();
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             stage.setTitle("Peminjaman Buku");
             stage.setScene(scene);
             stage.show();

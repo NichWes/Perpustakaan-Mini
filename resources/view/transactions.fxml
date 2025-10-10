@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uts.controllers.TransactionsController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uts.controllers.TransactionsController">
    <children>
-      <Label alignment="TOP_CENTER" text="Peminjaman Buku">
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="137.0" text="Peminjaman Buku">
          <font>
             <Font size="18.0" />
          </font>
@@ -20,7 +20,7 @@
          <children>
             <ComboBox fx:id="cbMember" prefHeight="25.0" prefWidth="250.0" promptText="Pilih Anggota" />
             <ComboBox fx:id="cbBook" prefHeight="25.0" prefWidth="251.0" promptText="Pilih Buku" />
-            <Button fx:id="btnBorrow" mnemonicParsing="false" onAction="#onBorrow" text="Pinjam" />
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onBorrow" text="Pinjam" />
          </children>
       </HBox>
       <TableView fx:id="tableTransactions" prefHeight="331.0" prefWidth="600.0">
