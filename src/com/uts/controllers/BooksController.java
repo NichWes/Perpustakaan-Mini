@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import com.uts.model.Book;
+import com.uts.model.Member;
 
 public class BooksController {
 
@@ -28,7 +29,10 @@ public class BooksController {
         colId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         colTitle.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         colAuthor.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-        colYear.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+        colYear.setCellValueFactory(cellData -> {
+            Integer year = cellData.getValue().getYear();
+            return new javafx.beans.property.SimpleStringProperty(year == null ? "-" : year.toString());
+        });
 
         tableBooks.setItems(bookList);
     }
@@ -41,7 +45,7 @@ public class BooksController {
         String yearStr = tfYear.getText().trim();
 
         if (id.isEmpty() || title.isEmpty()) {
-            showError("Mandatory field harus diisi!");
+            showError("ID dan Judul wajib diisi!");
             return;
         }
 
@@ -55,9 +59,9 @@ public class BooksController {
             }
         }
 
-        // Cek jika kita sedang menambah (bukan edit)
+        // Tambah atau edit
         if (editing == null) {
-            // Pengecekan ID duplikat
+            // Cek duplikat ID
             for (Book b : bookList) {
                 if (b.getId().equalsIgnoreCase(id)) {
                     showError("ID buku sudah ada!");
@@ -69,7 +73,6 @@ public class BooksController {
             bookList.add(book);
             showMessage("Buku berhasil ditambahkan!");
         } else {
-            // Mode edit
             editing.setTitle(title);
             editing.setAuthor(author);
             editing.setYear(year);
@@ -91,36 +94,34 @@ public class BooksController {
         tfId.setText(selected.getId());
         tfTitle.setText(selected.getTitle());
         tfAuthor.setText(selected.getAuthor());
-        tfYear.setText(String.valueOf(selected.getYear()));
+        tfYear.setText(selected.getYear() == null ? "" : String.valueOf(selected.getYear()));
 
-        tfId.setDisable(true); 
+        tfId.setDisable(true);
         btnAdd.setText("Update");
     }
 
     @FXML
     private void onDelete(ActionEvent event) {
-        Book selected = tableBooks.getSelectionModel().getSelectedItem();
-        if (selected == null) {
-            showError("Pilih buku yang ingin dihapus!");
-            return;
-        }
-
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-        confirm.setTitle("Confirmation");
-        confirm.setHeaderText("Apakah Anda yakin ingin menghapus data ini?");
-        confirm.setContentText(selected.getTitle());
-
-        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
-        confirm.getButtonTypes().setAll(yesButton, noButton);
-
-        confirm.showAndWait().ifPresent(response -> {
-            if (response == yesButton) {
-                bookList.remove(selected);
-                showMessage("Buku berhasil dihapus!");
-            }
-        });
+    Book selected = tableBooks.getSelectionModel().getSelectedItem();
+    if (selected == null) {
+        showError("Pilih buku yang ingin dihapus!");
+        return;
     }
+
+    Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
+        "Apakah Anda yakin ingin menghapus data ini?",
+        ButtonType.YES, ButtonType.NO);
+        confirm.setTitle("Konfirmasi Hapus");
+        confirm.setHeaderText(null);
+
+    confirm.showAndWait().ifPresent(res -> {
+        if (res == ButtonType.YES) {
+            bookList.remove(selected);
+            showMessage("Data buku berhasil dihapus!");
+        }
+    });
+}
+
 
     @FXML
     private void clearForm() {
@@ -129,6 +130,7 @@ public class BooksController {
         tfAuthor.clear();
         tfYear.clear();
         tfId.setDisable(false);
+        btnAdd.setText("Tambah");
         editing = null;
     }
 
@@ -150,5 +152,10 @@ public class BooksController {
 
     public ObservableList<Book> getBookList() {
         return bookList;
+    }
+
+    public void setBookList(ObservableList<Book> sharedList) {
+        this.bookList = sharedList;
+        tableBooks.setItems(bookList);
     }
 }

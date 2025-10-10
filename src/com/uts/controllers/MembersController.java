@@ -39,19 +39,16 @@ public class MembersController {
         String address = tfAddress.getText().trim();
         String phone = tfPhone.getText().trim();
 
-        // Validasi field wajib
         if (id.isEmpty() || name.isEmpty() || phone.isEmpty()) {
-            showError("Mandatory field harus diisi!");
+            showError("ID, Nama, dan Telepon wajib diisi!");
             return;
         }
 
-        // Pengecekan bahwa telepon hanya angka
         if (!phone.matches("\\d+")) {
             showError("Nomor telepon harus angka!");
             return;
         }
 
-        // Saat tambah
         if (editing == null) {
             for (Member m : memberList) {
                 if (m.getId().equalsIgnoreCase(id)) {
@@ -61,7 +58,7 @@ public class MembersController {
             }
             memberList.add(new Member(id, name, address, phone));
             showMessage("Anggota berhasil ditambahkan!");
-        } else { // Saat update
+        } else {
             editing.setName(name);
             editing.setAddress(address);
             editing.setPhone(phone);
@@ -100,7 +97,7 @@ public class MembersController {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
             "Apakah Anda yakin ingin menghapus data ini?",
             ButtonType.YES, ButtonType.NO);
-        confirm.setTitle("Confirmation");
+        confirm.setTitle("Konfirmasi Hapus");
         confirm.setHeaderText(null);
 
         confirm.showAndWait().ifPresent(res -> {
@@ -136,5 +133,14 @@ public class MembersController {
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    public ObservableList<Member> getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(ObservableList<Member> sharedList) {
+        this.memberList = sharedList;
+        tableMembers.setItems(memberList);
     }
 }
