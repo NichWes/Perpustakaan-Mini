@@ -31,4 +31,9 @@ public class Book {
     public int getYear() { return year.get(); }
     public void setYear(Integer year) { this.year.set(year != null ? year : 0); }
     public IntegerProperty yearProperty() { return year; }
+
+    @Override
+    public String toString() {
+        return title.get() + " (" + id.get() + ")";
+    }
 }
